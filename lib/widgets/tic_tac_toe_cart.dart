@@ -22,7 +22,9 @@ class TicTakToeCart extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
+            if(whatToShow.isEmpty){
             iWasClicked(index);
+            }
           },
           child: Container(
             height: 100,

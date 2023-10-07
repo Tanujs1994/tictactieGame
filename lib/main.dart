@@ -156,6 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         setState(() {
                           allCells = ["", "", "", "", "", "", "", "", "", ""];
+                          isOdd = true;
                         });
                       },
                       child: Text('Restart'))
