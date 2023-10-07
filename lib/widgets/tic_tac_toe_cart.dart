@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class TicTakToeCart extends StatelessWidget {
@@ -5,10 +7,19 @@ class TicTakToeCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 100,
-      color: Colors.lightGreenAccent,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          height: 100,
+          width: 100,
+          color: Colors.lightGreenAccent,
+        ),
+        Text(
+          'X',
+          style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 }

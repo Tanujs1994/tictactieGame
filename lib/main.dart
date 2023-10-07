@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:tic_tac_toe_game/widgets/tic_tac_toe_cart.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // debugPaintSizeEnabled = true;
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -47,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TicTakToeCart(),
                       SizedBox(
@@ -63,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 20,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TicTakToeCart(),
                       SizedBox(
@@ -79,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 20,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TicTakToeCart(),
                       SizedBox(
