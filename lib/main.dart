@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe_game/widgets/tic_tac_toe_cart.dart';
@@ -40,12 +40,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<String> allCells = ["", "", "", "", "", "", "", "", "", ""];
+  bool isOdd = true;
 
   void ACellWasClicked(int idx) {
     print('user clicked on cell $idx');
-    print('o');
     setState(() {
-      allCells[idx] = "X";
+      if (isOdd) {
+        allCells[idx] = "X";
+        isOdd = false;
+      } else {
+        isOdd = true;
+        allCells[idx] = "0";
+      }
     });
   }
 
@@ -146,6 +152,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          allCells = ["", "", "", "", "", "", "", "", "", ""];
+                        });
+                      },
+                      child: Text('Restart'))
                 ],
               )
             ],

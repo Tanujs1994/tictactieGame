@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class TicTakToeCart extends StatelessWidget {
   String whatToShow = '';
+
   final Function(int) iWasClicked;
   int index;
 
@@ -12,7 +13,7 @@ class TicTakToeCart extends StatelessWidget {
       {super.key,
       required this.whatToShow,
       required this.index,
-      required this.iWasClicked});
+      required this.iWasClicked,});
 
   @override
   Widget build(BuildContext context) {
