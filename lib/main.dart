@@ -1,16 +1,20 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:tic_tac_toe_game/widgets/tic_tac_toe_cart.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // debugPaintSizeEnabled = true;
@@ -35,6 +39,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<String> allCells = ["", "x", "", "", "x", "", "", "", "x", "O"];
+
+  void ACellWasClicked(int idx) {
+    print('user clicked on cell $idx');
+    print('o');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,15 +62,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[1],
+                        index: 1,
+                        iWasClicked: ACellWasClicked,
+                      ),
                       SizedBox(
                         width: 20,
                       ),
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[2],
+                        index: 2,
+                        iWasClicked: ACellWasClicked,
+                      ),
                       SizedBox(
                         width: 20,
                       ),
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[3],
+                        index: 3,
+                        iWasClicked: ACellWasClicked,
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -68,15 +91,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[4],
+                        index: 4,
+                        iWasClicked: ACellWasClicked,
+                      ),
                       SizedBox(
                         width: 20,
                       ),
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[5],
+                        index: 5,
+                        iWasClicked: ACellWasClicked,
+                      ),
                       SizedBox(
                         width: 20,
                       ),
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[6],
+                        index: 6,
+                        iWasClicked: ACellWasClicked,
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -85,15 +120,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[7],
+                        index: 7,
+                        iWasClicked: ACellWasClicked,
+                      ),
                       SizedBox(
                         width: 20,
                       ),
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[8],
+                        index: 8,
+                        iWasClicked: ACellWasClicked,
+                      ),
                       SizedBox(
                         width: 20,
                       ),
-                      TicTakToeCart(),
+                      TicTakToeCart(
+                        whatToShow: allCells[9],
+                        index: 9,
+                        iWasClicked: ACellWasClicked,
+                      ),
                     ],
                   ),
                 ],

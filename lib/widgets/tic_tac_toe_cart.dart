@@ -2,15 +2,16 @@
 
 import 'package:flutter/material.dart';
 
-class TicTakToeCart extends StatefulWidget {
-  const TicTakToeCart({super.key});
+class TicTakToeCart extends StatelessWidget {
+  String whatToShow = '';
+  final Function(int) iWasClicked;
+  int index;
 
-  @override
-  State<TicTakToeCart> createState() => _TicTakToeCartState();
-}
-
-class _TicTakToeCartState extends State<TicTakToeCart> {
-  var ShowSymbol = false;
+  TicTakToeCart(
+      {super.key,
+      required this.whatToShow,
+      required this.index,
+      required this.iWasClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +20,7 @@ class _TicTakToeCartState extends State<TicTakToeCart> {
       children: [
         InkWell(
           onTap: () {
-            setState(() {
-              ShowSymbol = true;
-            });
+            iWasClicked(index);
           },
           child: Container(
             height: 100,
@@ -29,11 +28,10 @@ class _TicTakToeCartState extends State<TicTakToeCart> {
             color: Colors.lightGreenAccent,
           ),
         ),
-        if (ShowSymbol)
-          Text(
-            'X',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-          ),
+        Text(
+          whatToShow, 
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
