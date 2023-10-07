@@ -39,11 +39,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> allCells = ["", "x", "", "", "x", "", "", "", "x", "O"];
+  List<String> allCells = ["", "", "", "", "", "", "", "", "", ""];
 
   void ACellWasClicked(int idx) {
     print('user clicked on cell $idx');
     print('o');
+    setState(() {
+      allCells[idx] = "X";
+    });
   }
 
   @override
