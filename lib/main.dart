@@ -169,6 +169,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         allCells = ["", "", "", "", "", "", "", "", "", ""];
                         isOdd = true;
                       });
+                      showDialog(
+                          context: context,
+                          builder: (ctx) {
+                            return AlertDialog(
+                              title: Text('Draw'),
+                              content: Text('Match was drawn'),
+                            );
+                          });
                     },
                     child: Text('Restart')),
               )
