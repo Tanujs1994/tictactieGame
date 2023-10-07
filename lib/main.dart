@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Tic Tac Toe'),
@@ -41,18 +41,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<String> allCells = ["", "", "", "", "", "", "", "", "", ""];
   bool isOdd = true;
+  var whosTurnNext = 'X';
 
   void ACellWasClicked(int idx) {
     print('user clicked on cell $idx');
     setState(() {
       if (isOdd) {
+        whosTurnNext = "0";
         allCells[idx] = "X";
         isOdd = false;
       } else {
+        whosTurnNext = 'X';
         isOdd = true;
         allCells[idx] = "0";
       }
-      
     });
   }
 
@@ -67,101 +69,108 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              Column(
+              Center(
+                  child: Padding(
+                padding: const EdgeInsets.only(bottom: 50, top: 15),
+                child: Text(
+                  'Turn of $whosTurnNext',
+                  style: TextStyle(fontSize: 20),
+                ),
+              )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TicTakToeCart(
-                        whatToShow: allCells[1],
-                        index: 1,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      TicTakToeCart(
-                        whatToShow: allCells[2],
-                        index: 2,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      TicTakToeCart(
-                        whatToShow: allCells[3],
-                        index: 3,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                    ],
+                  TicTakToeCart(
+                    whatToShow: allCells[1],
+                    index: 1,
+                    iWasClicked: ACellWasClicked,
                   ),
                   SizedBox(
-                    height: 20,
+                    width: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TicTakToeCart(
-                        whatToShow: allCells[4],
-                        index: 4,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      TicTakToeCart(
-                        whatToShow: allCells[5],
-                        index: 5,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      TicTakToeCart(
-                        whatToShow: allCells[6],
-                        index: 6,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                    ],
+                  TicTakToeCart(
+                    whatToShow: allCells[2],
+                    index: 2,
+                    iWasClicked: ACellWasClicked,
                   ),
                   SizedBox(
-                    height: 20,
+                    width: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TicTakToeCart(
-                        whatToShow: allCells[7],
-                        index: 7,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      TicTakToeCart(
-                        whatToShow: allCells[8],
-                        index: 8,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      TicTakToeCart(
-                        whatToShow: allCells[9],
-                        index: 9,
-                        iWasClicked: ACellWasClicked,
-                      ),
-                    ],
+                  TicTakToeCart(
+                    whatToShow: allCells[3],
+                    index: 3,
+                    iWasClicked: ACellWasClicked,
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          allCells = ["", "", "", "", "", "", "", "", "", ""];
-                          isOdd = true;
-                        });
-                      },
-                      child: Text('Restart'))
                 ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TicTakToeCart(
+                    whatToShow: allCells[4],
+                    index: 4,
+                    iWasClicked: ACellWasClicked,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  TicTakToeCart(
+                    whatToShow: allCells[5],
+                    index: 5,
+                    iWasClicked: ACellWasClicked,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  TicTakToeCart(
+                    whatToShow: allCells[6],
+                    index: 6,
+                    iWasClicked: ACellWasClicked,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TicTakToeCart(
+                    whatToShow: allCells[7],
+                    index: 7,
+                    iWasClicked: ACellWasClicked,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  TicTakToeCart(
+                    whatToShow: allCells[8],
+                    index: 8,
+                    iWasClicked: ACellWasClicked,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  TicTakToeCart(
+                    whatToShow: allCells[9],
+                    index: 9,
+                    iWasClicked: ACellWasClicked,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        allCells = ["", "", "", "", "", "", "", "", "", ""];
+                        isOdd = true;
+                      });
+                    },
+                    child: Text('Restart')),
               )
             ],
           ),
