@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         isOdd = true;
         allCells[idx] = "0";
       }
+      
     });
   }
 
