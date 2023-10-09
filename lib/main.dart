@@ -237,9 +237,14 @@ class _MyHomePageState extends State<MyHomePage> {
               Center(
                   child: Padding(
                 padding: const EdgeInsets.only(bottom: 30, top: 15),
-                child: Text(
-                  'Turn of $whosTurnNext',
-                  style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),
+                child: Column(
+                  children: [
+                    Text(
+                      'Turn of',
+                      style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold),
+                    ),
+                    Text('$whosTurnNext',style: TextStyle(fontSize: 60,color: Colors.white,fontWeight: FontWeight.bold,)),
+                  ],
                 ),
               )),
               Padding(

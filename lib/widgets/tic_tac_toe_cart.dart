@@ -45,7 +45,7 @@ class TicTakToeCart extends StatelessWidget {
         ),
         Text(
           whatToShow,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold,color: Colors.white),
         ),
       ],
     );
