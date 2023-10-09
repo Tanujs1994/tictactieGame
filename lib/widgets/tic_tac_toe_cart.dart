@@ -18,14 +18,13 @@ class TicTakToeCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bgColor = Colors.blueGrey;
-    if (whatToShow == 'X'){
-      bgColor = Colors.red;
-    }else if (whatToShow == '0') {
-      bgColor = Colors.yellow;
+    var bgColor = Color(0xffAE445A);
+    if (whatToShow == 'X') {
+      bgColor = Color(0xffAE445A);
+    } else if (whatToShow == '0') {
+      bgColor =  Color(0xffF39F5A);
     }
-      
-    
+
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -36,7 +35,10 @@ class TicTakToeCart extends StatelessWidget {
             }
           },
           child: Container(
-            decoration: BoxDecoration(color: bgColor,borderRadius: BorderRadius.circular(10),),
+            decoration: BoxDecoration(
+              color: bgColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
             height: 100,
             width: 100,
           ),

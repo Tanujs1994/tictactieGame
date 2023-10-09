@@ -19,9 +19,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // debugPaintSizeEnabled = true;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Tic Tac Toe'),
@@ -163,6 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
       );
       showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (ctx) {
             return AlertDialog(
               title: Text('Draw'),
@@ -186,9 +188,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (ctx) {
           return AlertDialog(
-            title: Text('X Won'),
+            title: Text('X Won',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red)),
             content: Text('Congratulations 🥳 '),
             actions: [button],
           );
@@ -209,9 +212,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (ctx) {
           return AlertDialog(
-            title: Text('Zero Won'),
+            title: Text('Zero Won',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.yellow),),
             content: Text('Congratulations 🥳 '),
             actions: [button],
           );
@@ -221,9 +225,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Color(0xff662549),
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
+          backgroundColor:Color(0xff071952),
+          title: Text('Tic Tac Toe',style: TextStyle(color:Colors.white),),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -234,7 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.only(bottom: 30, top: 15),
                 child: Text(
                   'Turn of $whosTurnNext',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),
                 ),
               )),
               Padding(
