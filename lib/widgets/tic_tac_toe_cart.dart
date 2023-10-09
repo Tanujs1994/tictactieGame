@@ -36,9 +36,9 @@ class TicTakToeCart extends StatelessWidget {
             }
           },
           child: Container(
+            decoration: BoxDecoration(color: bgColor,borderRadius: BorderRadius.circular(10),),
             height: 100,
             width: 100,
-            color:bgColor,
           ),
         ),
         Text(

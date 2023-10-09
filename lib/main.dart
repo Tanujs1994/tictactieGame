@@ -56,6 +56,161 @@ class _MyHomePageState extends State<MyHomePage> {
         allCells[idx] = "0";
       }
     });
+    XWins();
+    ZeroWins();
+    MatchDraw();
+  }
+
+  void XWins() {
+    if (allCells[1] == allCells[2] &&
+        allCells[2] == allCells[3] &&
+        allCells[1] == 'X') {
+      print('X Wins');
+      ShowXWonDialog();
+    } else if (allCells[4] == allCells[5] &&
+        allCells[5] == allCells[6] &&
+        allCells[4] == 'X') {
+      print('X Wins');
+      ShowXWonDialog();
+    } else if (allCells[7] == allCells[8] &&
+        allCells[8] == allCells[9] &&
+        allCells[7] == 'X') {
+      print('X Wins');
+      ShowXWonDialog();
+    } else if (allCells[1] == allCells[4] &&
+        allCells[4] == allCells[7] &&
+        allCells[1] == "x") {
+      print('X Wins');
+      ShowXWonDialog();
+    } else if (allCells[2] == allCells[5] &&
+        allCells[5] == allCells[8] &&
+        allCells[2] == 'X') {
+      print('X Wins');
+      ShowXWonDialog();
+    } else if (allCells[3] == allCells[6] &&
+        allCells[6] == allCells[9] &&
+        allCells[3] == 'X') {
+      print('X Wins');
+      ShowXWonDialog();
+    } else if (allCells[1] == allCells[5] &&
+        allCells[5] == allCells[9] &&
+        allCells[1] == 'X') {
+      print('X Wins');
+      ShowXWonDialog();
+    } else if (allCells[3] == allCells[5] &&
+        allCells[5] == allCells[7] &&
+        allCells[3] == 'x') {
+      print('X Wins');
+      ShowXWonDialog();
+    }
+  }
+
+  void ZeroWins() {
+    if (allCells[1] == allCells[2] &&
+        allCells[2] == allCells[3] &&
+        allCells[1] == '0') {
+      ShowZeroWonDialog();
+    } else if (allCells[4] == allCells[5] &&
+        allCells[5] == allCells[6] &&
+        allCells[4] == '0') {
+      ShowZeroWonDialog();
+    } else if (allCells[7] == allCells[8] &&
+        allCells[8] == allCells[9] &&
+        allCells[7] == '0') {
+      ShowZeroWonDialog();
+    } else if (allCells[1] == allCells[4] &&
+        allCells[4] == allCells[7] &&
+        allCells[1] == "0") {
+      ShowZeroWonDialog();
+    } else if (allCells[2] == allCells[5] &&
+        allCells[5] == allCells[8] &&
+        allCells[2] == '0') {
+      ShowZeroWonDialog();
+    } else if (allCells[3] == allCells[6] &&
+        allCells[6] == allCells[9] &&
+        allCells[3] == '0') {
+      ShowZeroWonDialog();
+    } else if (allCells[1] == allCells[5] &&
+        allCells[5] == allCells[9] &&
+        allCells[1] == '0') {
+      ShowZeroWonDialog();
+    } else if (allCells[3] == allCells[5] &&
+        allCells[5] == allCells[7] &&
+        allCells[3] == '0') {
+      ShowZeroWonDialog();
+    }
+  }
+
+  void MatchDraw() {
+    var areAllFieldFilled = true;
+    for (int i = 1; i <= 9; i++) {
+      if (allCells[i].isEmpty) {
+        areAllFieldFilled = false;
+        break;
+      }
+    }
+    if (areAllFieldFilled) {
+      final button = ElevatedButton(
+        onPressed: () {
+          setState(() {
+            allCells = ["", "", "", "", "", "", "", "", "", ""];
+            isOdd = true;
+          });
+        },
+        child: Text('Restart'),
+      );
+      showDialog(
+          context: context,
+          builder: (ctx) {
+            return AlertDialog(
+              title: Text('Draw'),
+              content: Text('Match was drawn'),
+              actions: [button],
+            );
+          });
+    }
+  }
+
+  void ShowXWonDialog() {
+    final button = ElevatedButton(
+      onPressed: () {
+        setState(() {
+          allCells = ["", "", "", "", "", "", "", "", "", ""];
+          isOdd = true;
+        });
+      },
+      child: Text('Restart'),
+    );
+    showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: Text('X Won'),
+            content: Text('Congratulations'),
+            actions: [button],
+          );
+        });
+  }
+
+  void ShowZeroWonDialog() {
+    final button = ElevatedButton(
+      onPressed: () {
+        setState(() {
+          allCells = ["", "", "", "", "", "", "", "", "", ""];
+          isOdd = true;
+        });
+      },
+      child: Text('Restart'),
+    );
+    showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: Text('Zero Won'),
+            content: Text('Congratulations'),
+            actions: [button],
+          );
+        });
   }
 
   @override
@@ -71,115 +226,87 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Center(
                   child: Padding(
-                padding: const EdgeInsets.only(bottom: 50, top: 15),
+                padding: const EdgeInsets.only(bottom: 30, top: 15),
                 child: Text(
                   'Turn of $whosTurnNext',
                   style: TextStyle(fontSize: 20),
                 ),
               )),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TicTakToeCart(
-                    whatToShow: allCells[1],
-                    index: 1,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  TicTakToeCart(
-                    whatToShow: allCells[2],
-                    index: 2,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  TicTakToeCart(
-                    whatToShow: allCells[3],
-                    index: 3,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TicTakToeCart(
+                      whatToShow: allCells[1],
+                      index: 1,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                    TicTakToeCart(
+                      whatToShow: allCells[2],
+                      index: 2,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                    TicTakToeCart(
+                      whatToShow: allCells[3],
+                      index: 3,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TicTakToeCart(
-                    whatToShow: allCells[4],
-                    index: 4,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  TicTakToeCart(
-                    whatToShow: allCells[5],
-                    index: 5,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  TicTakToeCart(
-                    whatToShow: allCells[6],
-                    index: 6,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TicTakToeCart(
-                    whatToShow: allCells[7],
-                    index: 7,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  TicTakToeCart(
-                    whatToShow: allCells[8],
-                    index: 8,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  TicTakToeCart(
-                    whatToShow: allCells[9],
-                    index: 9,
-                    iWasClicked: ACellWasClicked,
-                  ),
-                ],
+                height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        allCells = ["", "", "", "", "", "", "", "", "", ""];
-                        isOdd = true;
-                      });
-                      showDialog(
-                          context: context,
-                          builder: (ctx) {
-                            return AlertDialog(
-                              title: Text('Draw'),
-                              content: Text('Match was drawn'),
-                            );
-                          });
-                    },
-                    child: Text('Restart')),
-              )
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TicTakToeCart(
+                      whatToShow: allCells[4],
+                      index: 4,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                    TicTakToeCart(
+                      whatToShow: allCells[5],
+                      index: 5,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                    TicTakToeCart(
+                      whatToShow: allCells[6],
+                      index: 6,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TicTakToeCart(
+                      whatToShow: allCells[7],
+                      index: 7,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                    TicTakToeCart(
+                      whatToShow: allCells[8],
+                      index: 8,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                    TicTakToeCart(
+                      whatToShow: allCells[9],
+                      index: 9,
+                      iWasClicked: ACellWasClicked,
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ));
