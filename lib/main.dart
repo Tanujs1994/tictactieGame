@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         whosTurnNext = 'X';
         isOdd = true;
         allCells[idx] = "0";
-      }
+      } 
     });
     XWins();
     ZeroWins();
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ShowXWonDialog();
     } else if (allCells[1] == allCells[4] &&
         allCells[4] == allCells[7] &&
-        allCells[1] == "x") {
+        allCells[1] == "X") {
       print('X Wins');
       ShowXWonDialog();
     } else if (allCells[2] == allCells[5] &&
@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ShowXWonDialog();
     } else if (allCells[3] == allCells[5] &&
         allCells[5] == allCells[7] &&
-        allCells[3] == 'x') {
+        allCells[3] == 'X') {
       print('X Wins');
       ShowXWonDialog();
     }
@@ -152,6 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
     if (areAllFieldFilled) {
       final button = ElevatedButton(
         onPressed: () {
+         Navigator.of(context).pop();
+
           setState(() {
             allCells = ["", "", "", "", "", "", "", "", "", ""];
             isOdd = true;
@@ -174,6 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void ShowXWonDialog() {
     final button = ElevatedButton(
       onPressed: () {
+         Navigator.of(context).pop();
         setState(() {
           allCells = ["", "", "", "", "", "", "", "", "", ""];
           isOdd = true;
@@ -186,15 +189,17 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (ctx) {
           return AlertDialog(
             title: Text('X Won'),
-            content: Text('Congratulations'),
+            content: Text('Congratulations 🥳 '),
             actions: [button],
           );
         });
+        
   }
 
   void ShowZeroWonDialog() {
     final button = ElevatedButton(
       onPressed: () {
+         Navigator.of(context).pop();
         setState(() {
           allCells = ["", "", "", "", "", "", "", "", "", ""];
           isOdd = true;
@@ -207,7 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (ctx) {
           return AlertDialog(
             title: Text('Zero Won'),
-            content: Text('Congratulations'),
+            content: Text('Congratulations 🥳 '),
             actions: [button],
           );
         });
